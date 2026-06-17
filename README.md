@@ -99,13 +99,16 @@ GET /api/categories/
 
 ---
 
-## 子模块同步
+## 手动同步源仓库
 
-更新子模块到最新版本：
+本项目使用 GitHub Actions 手动触发同步：
 
-```bash
-git submodule update --remote
-```
+1. 进入仓库的 **Actions** 页面
+2. 选择 **Sync from Upstream** 工作流
+3. 点击 **Run workflow** 按钮
+4. 确认执行即可同步最新代码
+
+---
 
 ## 来源声明
 

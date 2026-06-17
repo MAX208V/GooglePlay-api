@@ -1,0 +1,41 @@
+name: Sync from Upstream
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: '源仓库分支'
+        required: false
+        default: 'main'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync from upstream
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # 添加源仓库为远程
+          git remote add upstream https://github.com/facundoolano/google-play-api.git
+          git fetch upstream
+          
+          # 合并源仓库代码
+          git merge upstream/${{ github.event.inputs.branch }} --allow-unrelated-histories --no-edit
+          
+          # 推送更新
+          git push origin main
+
+      - name: Check for changes
+        run: |
+          if git diff --quiet HEAD~1; then
+            echo "没有新的更新"
+          else
+            echo "同步成功"
+          fi
