@@ -2,10 +2,15 @@
   "version": 2,
   "buildCommand": "cd google-play-api && npm install",
   "outputDirectory": "google-play-api",
-  "rewrites": [
+  "functions": {
+    "google-play-api/server.js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/google-play-api/server.js"
+      "src": "/(.*)",
+      "dest": "/google-play-api/server.js"
     }
   ]
 }
