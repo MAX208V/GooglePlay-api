@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "cd google-play-api && npm install",
+  "outputDirectory": "google-play-api",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/google-play-api/server.js"
+    }
+  ]
+}
