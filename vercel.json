@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "cd google-play-api && npm install",
-  "outputDirectory": "google-play-api",
-  "functions": {
-    "google-play-api/server.js": {
-      "runtime": "@vercel/node"
-    }
-  },
+  "installCommand": "npm install && cd google-play-api && npm install",
+  "buildCommand": "echo 'No build required'",
+  "outputDirectory": ".",
   "routes": [
     {
       "src": "/(.*)",

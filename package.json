@@ -1,0 +1,11 @@
+{
+  "name": "google-play-api-deploy",
+  "version": "1.0.0",
+  "description": "Google Play API 部署仓库",
+  "main": "google-play-api/server.js",
+  "scripts": {
+    "start": "node google-play-api/server.js",
+    "postinstall": "cd google-play-api && npm install"
+  },
+  "dependencies": {}
+}
